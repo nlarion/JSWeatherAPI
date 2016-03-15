@@ -1,14 +1,14 @@
 var apiKey = require('./../.env').apiKey;
 
 $(document).ready(function() {
-  $('#weatherLocation').click(function() {
-    var city = $('#location').val();
-    $('#location').val("");
+  $('#getDescription').click(function() {
+    var city = $('#location2').val();
+    $('#location2').val("");
     $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey).then(function(response) {
-      $('.showWeather').prepend("The humidity in " + city + " is " + response.main.humidity + "%");
+      $('.showWeather').prepend("<br>" + "The weather in " + city + " is " + response.weather[0].description);
         console.log(JSON.stringify(response));
     }).fail(function(error) {
-      $('.showWeather').text(error.message);
+      $('.showWeather').text(error.responseJSON.message);
     });
   });
 });
