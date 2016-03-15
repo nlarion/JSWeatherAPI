@@ -68,7 +68,7 @@ gulp.task('jshint', function(){
 var buildProduction = utilities.env.production;
 
 gulp.task('concatInterface', function() {
-  return gulp.src(['./js/browser.js', './js/weather-interface.js'])
+  return gulp.src(['./js/weather-interface.js','./js/temperature.js','./js/temperature-interface.js'])
   .pipe(concat('allConcat.js'))
   .pipe(gulp.dest('./tmp'));
 });
